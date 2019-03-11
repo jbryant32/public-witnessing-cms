@@ -1,0 +1,39 @@
+<input id="pac-input" class="controls" type="text" placeholder="Search Box" />
+<div #gmap id="map"></div>
+<mat-card id="info-content" [ngClass]="{ hide: hideSaveLocation }">
+  <mat-card-title>Save Location</mat-card-title>
+  <mat-card-subtitle>Select Location Type</mat-card-subtitle>
+  <mat-card-content>
+    <div [fxHide]="hideLoadIndicator" fxLayout="row" fxLayoutAlign="center center" class="spinner-wrapper">
+      <mat-progress-spinner
+        color="primary"
+        mode="indeterminate"
+      ></mat-progress-spinner>
+    </div>
+    <form class="info-content-row">
+      <br />
+      <mat-form-field>
+        <mat-select
+          #locationSelect
+          placeholder="Select Location Type"
+          (valueChange)="selectionChanged($event)"
+        >
+          <mat-option role="option">None</mat-option>
+          <mat-option role="option" value="Cart">Cart</mat-option>
+          <mat-option role="option" value="Table">Table</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      (click)="saveLocation()"
+      style="margin: auto;"
+      mat-raised-button
+      color="primary"
+      [disabled]="saveMarkerDisabled"
+    >
+      Save
+    </button>
+  </mat-card-actions>
+</mat-card>

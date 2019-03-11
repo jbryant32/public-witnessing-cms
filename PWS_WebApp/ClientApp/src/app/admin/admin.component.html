@@ -1,0 +1,31 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="navbarDraw.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <a mat-button [routerLink]="['/dashboard']">Administraion</a>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" #navbarDraw opened>
+    <div fxLayout="column">
+      <a mat-button [routerLink]="['/admin/dashboard']" fxFlex="10%">
+        Home
+      </a>
+      <a mat-button [routerLink]="['/admin/users']" fxFlex="10%">
+        Publishers
+      </a>
+      <a mat-button [routerLink]="['/admin/locations']" fxFlex="10%">
+        Locations
+      </a>
+      <a mat-button [routerLink]="['/admin/Scheduled']" fxFlex="10%">
+        Scheduled
+      </a>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

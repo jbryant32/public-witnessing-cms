@@ -1,0 +1,71 @@
+<h1>
+  Delete Users
+</h1>
+<table #table mat-table matSort [dataSource]="tableDataSource">
+  <ng-container matColumnDef="Select All">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox
+        (change)="$event ? masterToggle() : null"
+        [checked]="selection.hasValue() && isAllSelected()"
+        [indeterminate]="selection.hasValue() && !isAllSelected()"
+      >
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox
+        (click)="$event.stopPropagation()"
+        (change)="$event ? selection.toggle(row) : null"
+        [checked]="selection.isSelected(row)"
+      >
+      </mat-checkbox>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="FirstName">
+    <th mat-sort-header mat-header-cell *matHeaderCellDef>
+      First Name
+    </th>
+    <td mat-cell *matCellDef="let user">
+      {{ user.FirstName }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="LastName">
+    <th mat-sort-header mat-header-cell *matHeaderCellDef>
+      Last Name
+    </th>
+    <td mat-cell *matCellDef="let user">
+      {{ user.LastName }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="KingdomHall">
+    <th mat-header-cell *matHeaderCellDef>
+      KingdomHall
+    </th>
+    <td mat-cell *matCellDef="let user">
+      {{ user.KingdomHall }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="Available">
+    <th mat-header-cell *matHeaderCellDef>
+      Available
+    </th>
+    <td mat-cell *matCellDef="let user">
+      {{ user.Available }}
+    </td>
+  </ng-container>
+  <tr
+    mat-header-row
+    style="position: sticky;"
+    *matHeaderRowDef="columnsForDisplay"
+  ></tr>
+  <tr mat-row *matRowDef="let rowData; columns: columnsForDisplay"></tr>
+</table>
+
+<div class="btn-container" fxLayout="row"  >
+  <button fxFlexAlign="left" color="basic" (click)="saveSelect()" mat-stroked-button>
+    SAVE
+  </button>
+  <button  fxFlexAlign="right" color="basic" (click)="deleteSelected()" mat-stroked-button>
+    DELETE
+  </button>
+</div>

@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="navbarDraw.toggle()"><mat-icon>menu</mat-icon></button>
+    <span>Title</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-drawer-container  class="example-container">
+  <mat-drawer mode="side" #navbarDraw  opened>
+    <div fxLayout="column">
+      <a mat-button [routerLink]="['/users']" fxFlex="10%">Manage Users</a>
+      <a mat-button routerLink="." fxFlex="10%">Manage Locations</a>
+      <a mat-button routerLink="." fxFlex="10%">Check Scheduling</a>
+      <a mat-button routerLink="." fxFlex="10%">Link</a>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="main-content">
+      <div class="welcome">
+        <h1>Welcome</h1>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,16 @@
+table {
+  width: 100%;
+}
+.mat-column-select {
+  overflow: initial;
+}
+tr:hover{
+  background: gray;
+}
+tr:active{
+  background: gray;
+}
+.btn-container{
+  padding: 20px;
+
+}
